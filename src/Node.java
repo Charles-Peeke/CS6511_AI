@@ -15,6 +15,11 @@ class Bucket {
     int capacity;
     int level;
 
+    /**
+     * Constructor to create a bucket given the capacity of the bucket and current level of water in the bucket
+     * @param cap Capacity of the bucket
+     * @param lvl Water level in the bucket
+     */
     public Bucket(int cap, int lvl) {
         capacity = cap;
         level = lvl;
@@ -62,11 +67,21 @@ public class Node {
     Node parent;
     int sum;
 
+    /**
+     * Constructor to create a new Node state based on a list of buckets and the goal value
+     * @param bucks List of buckets for the state
+     * @param goal Goal value for the state
+     */
     public Node(Bucket[] bucks, int goal) {
         buckets = bucks;
         this.goal = goal;
     }
 
+    /**
+     * Constructor that creates a new Node based from another node data.
+     * Primarily used to create neighbors from other nodes.
+     * @param base Node data extracted to create a new Node
+     */
     public Node(Node base) {
         this.solution = base.solution;
         this.g = base.g;

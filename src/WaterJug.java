@@ -16,7 +16,8 @@ public class WaterJug {
 
     /**
      * This is the driver method for the water jug problem
-     * @throws Exception : Occurs when a file cannot be read
+     * @param args Default formatting for Java
+     * @throws Exception Occurs when there is an issue reading the input file
      */
     public static void main(String[] args) throws Exception {
         // Read in the input file
