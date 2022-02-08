@@ -8,17 +8,20 @@ import java.util.ArrayList;
  * CS 6511 Spring 2022
  * Authors: Joyce Lee, Charles Peeke, Matthew Stoffer, Xi Wang
  */
+
+/**
+ * This class contains the driver functionality for the A Star Search as it relates to the Water Jug Problem
+ */
 public class WaterJug {
 
     /**
-     * This is the driver class for the water jug problem
-     *
+     * This is the driver method for the water jug problem
      * @throws Exception : Occurs when a file cannot be read
      */
     public static void main(String[] args) throws Exception {
         // Read in the input file
         FileReader fR = new FileReader();
-        fR.readFile("./data/input2");
+        fR.readFile("./data/input");
 
         // Save the data about the pitchers and the goal water total
         int[] inBuckets = fR.pitchers;
@@ -117,7 +120,13 @@ public class WaterJug {
         return -1;
     }
 
-    // Node in open & has a smaller f
+    /**
+     * Search the given list of nodes yet to be visited and determine if the given node is in the open List
+     * If it is in the open list and has a smaller value f() then return the position of the found node
+     * @param node The node to search for within the given list
+     * @param openList The list containing all nodes that are created, but have not yet been visited
+     * @return The location of the node or -1 if the node was not found
+     */
     public static int nodeLocInOpenSet(Node node, ArrayList<Node> openList) {
         int size = openList.size();
         for (int i = 0; i < size; i++) {
@@ -131,6 +140,12 @@ public class WaterJug {
         return -1;
     }
 
+    /**
+     * Determines if the give node already exists within the closed List
+     * @param node The node to search for within the given list
+     * @param closedList The list containing all nodes that have already been visited
+     * @return Whether the node was found in the list or not
+     */
     public static boolean nodeInClosedSet(Node node, ArrayList<Node> closedList) {
         int size = closedList.size();
         for (int i = 0; i < size; i++) {
@@ -142,6 +157,15 @@ public class WaterJug {
         return false;
     }
 
+    /**
+     * Finds all the possible neighbors of a give Node
+     * - Fill each bucket that is not full
+     * - Pour each bucket with water into another bucket
+     * - Empty each bucket with water in it
+     * - Pour each bucket with water in it into the solution
+     * @param current Node of the current state to find neighbors of
+     * @return List of all nodes that neighbor the current state node
+     */
     public static ArrayList<Node> getAllNeighbors(Node current) {
         ArrayList<Node> neighbors = new ArrayList<Node>();
         for (int i = 0; i < current.buckets.length; i++) {

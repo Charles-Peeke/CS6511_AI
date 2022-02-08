@@ -6,6 +6,11 @@
  * CS 6511 Spring 2022
  * Authors: Joyce Lee, Charles Peeke, Matthew Stoffer, Xi Wang
  */
+
+/**
+ * Structure to represent the buckets for the water jug problem.
+ * Each bucket contains a capacity for the bucket as well as a level of water currently in the bucket
+ */
 class Bucket {
     int capacity;
     int level;
